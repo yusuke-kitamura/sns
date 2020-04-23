@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>不満吐き出しサイト</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="header">
+      <nav class="nav-top">
+        <h1>不満吐き出しサイト</h1>
+
+        <div class="slidemenu">
+          <ul class="nav navbar-nav navbar-right" date-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
+            
+            <% if user_signed_in? %>
+            <li class="">
+              <%= link_to 'マイページ', "#", class: "glyphicon glyphicon-home" %>
+            </li>
+
+            <li class="">
+              <%= link_to '新規投稿', new_post_image_path, class: "glyphicon glyphicon-pencil" %>
+            </li>
+
+            <li class="">
+              <%= link_to 'ログアウト', destroy_user_session_path, class: "glyphicon glyphicon-log-out", method: :delete %>
+            </li>
+
+            <% else %>
+            <li class="">
+              <%= link_to '新規登録', new_user_registration_path, class: "glyphicon glyphicon-user" %>
+            </li>
+
+            <li class="">
+              <%= link_to 'ログイン',  new_user_session_path, class: "glyphicon glyphicon-log-in" %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <%= yield %>
+
+    <footer>
+      <div class="footer-text">CopyRight Kitamura.inc</div>
+    </footer>
+  </body>
+</html>
