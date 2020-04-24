@@ -18,6 +18,8 @@
 
 			<p><%= post_image.caption %></p>
 
+			<p><%= link_to "削除", post_images_path(@post_image), method: :delete %></p>
+
 			<% end %>
 		</div>
 	</div>
